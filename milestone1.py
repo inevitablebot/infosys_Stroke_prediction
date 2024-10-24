@@ -111,3 +111,6 @@ strokes_gender = df[df['stroke'] == 1].groupby('gender')['stroke'].count()
 stroke_per = (strokes_gender / total) * 100
 print("\nStroke percentage by gender (relative to all stroke cases):")
 print(stroke_per)
+#gender
+#Female    56.626506
+#Male      43.373494
