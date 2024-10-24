@@ -91,5 +91,23 @@ if null_values_after['bmi'] == 0:
 duplicates = df.duplicated().sum()
 print(f"\nNumber of duplicate rows: {duplicates}")
 
+# **Observation 8:**
+#strok rate by genders 
 print("\nStroke rate by gender:")
 print(df.groupby('gender')['stroke'].mean())
+#observation of Stroke rate by gender:
+#gender
+#Female    0.047094
+#Male      0.051064
+#Other     0.000000
+
+#percentage
+total = df['stroke'].sum()
+strokes_gender = df[df['stroke'] == 1].groupby('gender')['stroke'].count()
+stroke_per = (strokes_gender / total) * 100
+
+total = df['stroke'].sum()
+strokes_gender = df[df['stroke'] == 1].groupby('gender')['stroke'].count()
+stroke_per = (strokes_gender / total) * 100
+print("\nStroke percentage by gender (relative to all stroke cases):")
+print(stroke_per)
