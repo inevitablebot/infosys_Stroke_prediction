@@ -3,11 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt  
 import seaborn as sns 
 
-    # Load the dataset
 data = pd.read_csv('D:\\coding stuff\\infosys\\github\\dataset\\data.csv')  
-    # Load data from a CSV file to create a DataFrame, which allows easy data manipulation and analysis.
 
-    #   Display the first few rows to understand the structure of the data
 data.head()  
 
     # Encode 'Residence_type' as a binary feature 'Urban/Rural'
