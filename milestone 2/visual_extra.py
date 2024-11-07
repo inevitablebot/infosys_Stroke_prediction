@@ -3,13 +3,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import matplotlib.ticker as mtick
 
-# Load dataset
+
 df = pd.read_csv('D:\\coding stuff\\infosys\\github\\dataset\\data.csv')
 
-# Fill missing BMI values with mean for consistency in some analyses
+
 df = df.assign(bmi=df['bmi'].fillna(df['bmi'].mean()))
 
-# Define a consistent style for all plots
+
 sns.set(style="whitegrid")
 
 

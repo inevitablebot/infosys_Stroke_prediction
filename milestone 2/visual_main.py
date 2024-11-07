@@ -2,10 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Load the data
+
 data = pd.read_csv('D:\\coding stuff\\infosys\\github\\dataset\\data.csv')
 
-# Display the first few rows to check the data
 data.head()
 
 # What is the age distribution among patients?
@@ -23,7 +22,7 @@ plt.show()
 #                                           observation                                         #
 # The age distribution shows a roughly bimodal trend, with peaks around the ages of 40–60 
 # and 80. There is a steady increase in patient numbers from younger ages up to middle age,
-#  after which it drops slightly before peaking again in older age groups.
+# after which it drops slightly before peaking again in older age groups.
 #...............................................END.............................................#
 #...............................................................................................#
 
@@ -61,7 +60,7 @@ plt.show()
 
 #...............................................................................................#
 #                                           observation                                         #
-#Most patients with hypertension do not have a stroke, as indicated by the large bar at the 
+# Most patients with hypertension do not have a stroke, as indicated by the large bar at the 
 # zero mark. This suggests that while hypertension is a known risk factor, the majority of 
 # hypertensive patients in this dataset have not experienced a stroke.
 #...............................................END.............................................#
@@ -117,9 +116,9 @@ plt.show()
 
 #...............................................................................................#
 #                                           observation                                         #
-#Patients who have experienced a stroke (indicated by orange markers) appear to cluster around 
+# Patients who have experienced a stroke (indicated by orange markers) appear to cluster around 
 # higher glucose levels and a wide range of ages, mostly over 40. There are a few outliers, with
-#  higher BMI values but no clear pattern between BMI and stroke status. This suggests that age 
+# higher BMI values but no clear pattern between BMI and stroke status. This suggests that age 
 # and glucose level may have a stronger correlation with stroke than BMI alone.
 #...............................................END.............................................#
 #...............................................................................................#
