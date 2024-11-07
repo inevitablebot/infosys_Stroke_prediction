@@ -47,7 +47,6 @@ plt.show()
 #...............................................END.............................................#
 #...............................................................................................#
 
-
 # Is there a relationship between hypertension and the likelihood of having a stroke?
 
 # Bar Chart for Hypertension vs. Stroke Status
