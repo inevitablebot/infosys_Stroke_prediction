@@ -18,43 +18,28 @@ df = pd.read_csv("D:\\coding stuff\\infosys\\data.csv")
 df['bmi'] = df['bmi'].fillna(df['bmi'].median())
 
 
-# Convert 'gender' to binary variables
 df['gender_Male'] = df['gender'].apply(lambda x: 1 if x == 'Male' else 0)
 df['gender_Female'] = df['gender'].apply(lambda x: 1 if x == 'Female' else 0)
-
-# Convert 'ever_married' to binary (Yes=1, No=0)
 df['ever_married'] = df['ever_married'].apply(lambda x: 1 if x == 'Yes' else 0)
-
-# One-hot encode 'work_type'
 df['work_type_Private'] = df['work_type'].apply(lambda x: 1 if x == 'Private' else 0)
 df['work_type_Self_employed'] = df['work_type'].apply(lambda x: 1 if x == 'Self-employed' else 0)
 df['work_type_Govt_job'] = df['work_type'].apply(lambda x: 1 if x == 'Govt_job' else 0)
 df['work_type_children'] = df['work_type'].apply(lambda x: 1 if x == 'children' else 0)
 df['work_type_Never_worked'] = df['work_type'].apply(lambda x: 1 if x == 'Never_worked' else 0)
-
-# Convert 'Residence_type' to binary (Urban=1, Rural=0)
 df['Residence_type'] = df['Residence_type'].apply(lambda x: 1 if x == 'Urban' else 0)
 
-# One-hot encode 'smoking_status'
+
 df['smoking_status_formerly_smoked'] = df['smoking_status'].apply(lambda x: 1 if x == 'formerly smoked' else 0)
 df['smoking_status_never_smoked'] = df['smoking_status'].apply(lambda x: 1 if x == 'never smoked' else 0)
 df['smoking_status_smokes'] = df['smoking_status'].apply(lambda x: 1 if x == 'smokes' else 0)
 df['smoking_status_Unknown'] = df['smoking_status'].apply(lambda x: 1 if x == 'Unknown' else 0)
-
-# Drop original categorical columns as they are now encoded
-
-
-
 df_model = df.copy()
 df_model.drop(['Residence_type', 'work_type', 'smoking_status', 'gender', 'ever_married'], axis=1, inplace=True)
 
 
 X = df_model.drop('stroke', axis=1)
 y = df_model['stroke']
-
-
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
 
 linear_reg = LinearRegression()
 linear_reg.fit(X_train, y_train)
@@ -63,7 +48,6 @@ linear_reg_rmse = np.sqrt(mean_squared_error(y_test, linear_reg_predictions))*10
 linear_reg_acc = linear_reg.score(X_test, y_test)*100
 print(f"Linear Regression  Score: {linear_reg_acc :.2f}%")
 print(f"Linear Regression RMSE: {linear_reg_rmse :.2f}%")
-
 
 lasso_reg = Lasso()
 lasso_reg.fit(X_train, y_train)
@@ -81,7 +65,6 @@ Rigid_reg_rmse = np.sqrt(mean_squared_error(y_test, Rigid_reg_predictions))*100
 Rigid_reg_acce = Rigid_reg.score(X_test, y_test)*100
 print(f"Ridge Regression  Score: {Rigid_reg_acce :.2f}%")
 print(f"Ridge Regression RMSE: {Rigid_reg_rmse :.2f}%")
-
 
 logistic_reg = LogisticRegression(max_iter=1000)
 logistic_reg.fit(X_train, y_train)
