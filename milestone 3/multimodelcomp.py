@@ -165,7 +165,7 @@ Why Logistic Regression Works Well
     aligns well with logistic regression's strengths.
 
 
-Why the Other Models (Linear, Lasso, Ridge) Don’t Perform Well
+Why the Other Models (Linear, Lasso, Ridge) Don't Perform Well
 
     Linear regression models are intended for predicting continuous
     values. Since the target variable here is binary (stroke/no stroke),
