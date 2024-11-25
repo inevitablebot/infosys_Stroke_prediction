@@ -137,6 +137,106 @@ plt.savefig('class Precision-Recall curve.png')
 plt.show()
 
 
+
+
+
+#--------------------------------------------------------------------------#
+#----------------------------------Output----------------------------------#
+"""
+Linear Regression  Score: 9.10%
+Linear Regression RMSE: 22.76%
+
+Lasso Regression  Score: 0.94%
+Lasso Regression RMSE: 23.76%
+
+Ridge Regression  Score: 9.10%
+Ridge Regression RMSE: 22.76%
+
+Logistic Regression  Score: 93.93%
+Logistic Regression RMSE: 24.63%
+
+                 Model   Accuracy       RMSE
+0    Linear Regression   9.355712  22.727454
+1     Lasso Regression   0.942424  23.758795
+2     Ridge Regression   9.354708  22.727580
+3  Logistic Regression  93.933464  24.630339
+
+
+"""
+
+#--------------------------------------------------------------------------#
+"""
+Accuracy Comparison
+   # Logistic Regression 
+        it has the highest accuracy at 93.93%,
+        which significantly outperforms the other models. This high accuracy 
+        suggests that logistic regression is well-suited for the dataset, 
+        especially given that its designed for binary classification 
+        (i.e., predicting stroke or no stroke).
+   # The other models 
+        (Linear, Lasso, and Ridge Regression) show much lower accuracy, 
+        with values below 10%. This indicates that these regression models
+        may not be appropriate for this binary classification task, as they
+        are better suited for predicting continuous variables rather than
+        categorical outcomes.    
+"""
+#--------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------#
+"""
+RMSE Comparison:
+    Linear, Lasso, and Ridge Regression 
+        these models have similar RMSE values 
+        (around 0.23), indicating consistent performance in predicting 
+        continuous values.
+    Logistic Regression 
+        shows a slightly higher RMSE of 0.246, but in this context, RMSE is 
+        less relevant since logistic regression is used for classification
+        rather than for continuous value prediction    
+"""
+#--------------------------------------------------------------------------#
+
+
+#--------------------------------------------------------------------------#
+"""
+Why Logistic Regression Works Well
+    Logistic regression is designed for binary classification and works 
+    well when the relationship between the target variable and the 
+    predictors is linear. In our case, predicting stroke (1) or no stroke 
+    (0) based on features like BMI, age, gender, etc.,
+    aligns well with logistic regression's strengths.
+
+
+Why the Other Models (Linear, Lasso, Ridge) Don't Perform Well
+
+    Linear regression models are intended for predicting continuous
+    values. Since the target variable here is binary (stroke/no stroke),
+    these models struggle to classify it effectively, which is why their 
+    accuracy is so low. The same issue applies to Ridge and Lasso 
+    regression models. Although these are regularized versions of linear
+    regression, they still approach the problem as if predicting a
+    continuous outcome, making them less suitable for binary
+    classification tasks like this one.
+
+"""
+#--------------------------------------------------------------------------#
+
+#-------------------------------Conclusion---------------------------------#
+
+"""
+Logistic regression is the most effective model for this dataset because 
+it is specifically designed for binary classification, and the relationship 
+between the target variable (stroke/no stroke) and the predictors is linear. 
+The other models (Linear, Lasso, and Ridge regression) are not suitable for 
+this task, as they are designed for predicting continuous values rather 
+than binary outcomes. This makes logistic regression the best fit for 
+predicting binary outcomes like this one.
+
+"""
+#----------------------------------END--------------------------------------#
+
+
+
 #---------------------------------Comparison-------------------------------#
 #--------------------------------------------------------------------------#
 """
