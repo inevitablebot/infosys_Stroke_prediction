@@ -12,7 +12,7 @@ from sklearn.linear_model import Ridge, Lasso, LinearRegression
 from sklearn.metrics import mean_squared_error
 
 
-df = pd.read_csv("D:\\coding stuff\\infosys\\data.csv")
+df = pd.read_csv("dataset\data.csv")
 
 df['bmi'] = df['bmi'].fillna(df['bmi'].median())
 

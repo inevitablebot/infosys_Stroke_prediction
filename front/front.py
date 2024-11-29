@@ -106,7 +106,7 @@ def train_models(X_train, X_test, y_train, y_test):
 
     return results, logistic_reg
 
-file_path = "D:\coding stuff\infosys\data.csv"
+file_path = "dataset/data.csv"
 if file_path:
     df, df_model = load_data(file_path)
     st.write("Preview of the dataset:")

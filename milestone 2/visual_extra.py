@@ -4,7 +4,7 @@ import seaborn as sns
 import matplotlib.ticker as mtick
 
 
-df = pd.read_csv('D:\\coding stuff\\infosys\\github\\dataset\\data.csv')
+df = pd.read_csv("dataset\data.csv")
 
 
 df = df.assign(bmi=df['bmi'].fillna(df['bmi'].mean()))

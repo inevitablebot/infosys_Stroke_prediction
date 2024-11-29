@@ -18,7 +18,7 @@ from sklearn.metrics import precision_recall_curve, PrecisionRecallDisplay
 import matplotlib.pyplot as plt
 
 
-df = pd.read_csv("D:\\coding stuff\\infosys\\data.csv")
+df = pd.read_csv("dataset\data.csv")
 
 
 df['bmi'] = df['bmi'].fillna(df['bmi'].median())
@@ -163,5 +163,3 @@ recall=recall_score(y_test, Logistic_pred)
 print(f"Precision Score: {precision:.2f}")
 print(f"F1 Score: {f1:.2f}")
 print(f"Recall Score: {recall:.2f}")
-
-
