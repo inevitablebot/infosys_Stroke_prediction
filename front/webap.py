@@ -11,7 +11,7 @@ from sklearn import metrics
 
 warnings.filterwarnings('ignore')
 
-# Logistic regression class
+
 class LogisticRegression:
     def __init__(self, learning_rate=0.01, n_iters=1000):
         self.learning_rate = learning_rate
@@ -46,7 +46,7 @@ class LogisticRegression:
         y_pred = self.predict(X)
         return np.mean(y == y_pred)
 
-# Streamlit app configuration
+
 st.title("Stroke Risk Prediction and Data Analysis")
 
 @st.cache_data
@@ -57,14 +57,14 @@ def load_data():
 
 df = load_data()
 
-# Sidebar for Navigation
+
 st.sidebar.title("Navigation")
 options = st.sidebar.radio("Select Page", ["Data Visualization", "Stroke Prediction"])
 
 if options == "Data Visualization":
     st.header("Exploratory Data Analysis and Visualizations")
 
-    # Age Distribution
+
     st.subheader("Age Distribution of Patients")
     fig, ax = plt.subplots(figsize=(10, 6))
     sns.histplot(df['age'], kde=True, ax=ax)
@@ -77,7 +77,7 @@ if options == "Data Visualization":
         "**Observations:** The age distribution is roughly bimodal, with peaks around ages 40–60 and 80."
     )
 
-    # Average Glucose Level by Stroke
+
     st.subheader("Average Glucose Level by Stroke Status")
     fig, ax = plt.subplots(figsize=(10, 6))
     sns.boxplot(x='stroke', y='avg_glucose_level', data=df, ax=ax)
@@ -90,7 +90,7 @@ if options == "Data Visualization":
         "**Observations:** Stroke patients generally have higher glucose levels."
     )
 
-    # Hypertension vs Stroke
+  
     st.subheader("Hypertension vs Stroke")
     fig, ax = plt.subplots(figsize=(8, 6))
     sns.countplot(x='hypertension', hue='stroke', data=df, ax=ax)
@@ -103,7 +103,7 @@ if options == "Data Visualization":
         "**Observations:** Most hypertensive patients do not experience a stroke, but hypertension increases stroke likelihood."
     )
 
-    # BMI vs Glucose Level by Stroke
+ 
     st.subheader("BMI vs Average Glucose Level by Stroke")
     fig, ax = plt.subplots(figsize=(10, 6))
     sns.scatterplot(x='bmi', y='avg_glucose_level', hue='stroke', data=df, palette="viridis", ax=ax)
@@ -116,10 +116,9 @@ if options == "Data Visualization":
         "**Observations:** Elevated glucose levels correlate more strongly with stroke risk than BMI."
     )
 
-    # Accuracy and RMSE visualization
+
     st.subheader("Model Performance Evaluation")
 
-    # Prepare data for model training
     df['gender_Male'] = df['gender'].apply(lambda x: 1 if x == 'Male' else 0)
     df['gender_Female'] = df['gender'].apply(lambda x: 1 if x == 'Female' else 0)
     df['ever_married'] = df['ever_married'].apply(lambda x: 1 if x == 'Yes' else 0)
@@ -141,11 +140,11 @@ if options == "Data Visualization":
     y = df_model['stroke']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=41)
 
-    # Train Logistic Regression Model
+
     logistic_reg = LogisticRegression(learning_rate=0.01, n_iters=1000)
     logistic_reg.fit(X_train, y_train)
 
-    # Train additional models for comparison
+
     linear_reg = LinearRegression()
     linear_reg.fit(X_train, y_train)
     lasso_reg = Lasso()
@@ -153,12 +152,12 @@ if options == "Data Visualization":
     rigid_reg = Ridge()
     rigid_reg.fit(X_train, y_train)
 
-    # Prediction and evaluation for Logistic Regression
+
     logistic_pred = logistic_reg.predict(X_test)
     logistic_acc = logistic_reg.score(X_test, y_test)
     log_reg_rmse = np.sqrt(mean_squared_error(y_test, logistic_pred))
 
-    # Accuracy and RMSE calculation
+
     results = pd.DataFrame({
         'Model': ['Linear Regression', 'Lasso Regression', 'Ridge Regression', 'Logistic Regression'],
         'Accuracy': [
@@ -175,7 +174,7 @@ if options == "Data Visualization":
         ]
     })
 
-    # Plot accuracy and RMSE
+
     fig, ax = plt.subplots(1, 2, figsize=(12, 6))
     sns.barplot(x='Model', y='Accuracy', data=results, palette='Blues_d', ax=ax[0])
     ax[0].set_title('Model Accuracy')
@@ -190,7 +189,7 @@ if options == "Data Visualization":
 elif options == "Stroke Prediction":
     st.header("Predict Stroke Risk Using Machine Learning")
 
-    # Prepare data for model training
+
     df['gender_Male'] = df['gender'].apply(lambda x: 1 if x == 'Male' else 0)
     df['gender_Female'] = df['gender'].apply(lambda x: 1 if x == 'Female' else 0)
     df['ever_married'] = df['ever_married'].apply(lambda x: 1 if x == 'Yes' else 0)
@@ -212,11 +211,10 @@ elif options == "Stroke Prediction":
     y = df_model['stroke']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=41)
 
-    # Train Logistic Regression Model
+
     logistic_reg = LogisticRegression( learning_rate=0.01, n_iters=1000)
     logistic_reg.fit(X_train, y_train)
 
-    # Sidebar for user inputs 
     st.sidebar.header("Enter Your Details")
     age = st.sidebar.slider('Age', 18, 100, 30)
     gender = st.sidebar.selectbox('Gender', ['Male', 'Female'])
@@ -230,7 +228,7 @@ elif options == "Stroke Prediction":
     smoking_status = st.sidebar.selectbox('Smoking Status', ['formerly smoked', 'never smoked', 'smokes', 'Unknown'])
     predict_button = st.sidebar.button('Predict Stroke Risk')
 
-    # Prepare user input
+
     user_data = {
         'age': age,
         'gender_Male': 1 if gender == 'Male' else 0,
@@ -254,7 +252,7 @@ elif options == "Stroke Prediction":
     user_input_df = pd.DataFrame([user_data], columns=X.columns)
     user_input_df = user_input_df.fillna(X.median())
 
-    # Prediction
+
     if predict_button:
         with st.spinner('Predicting stroke risk...'):
             stroke_prediction = logistic_reg.predict(user_input_df)
