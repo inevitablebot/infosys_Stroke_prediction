@@ -16,7 +16,7 @@ from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import PrecisionRecallDisplay
 from sklearn.metrics import precision_recall_curve, PrecisionRecallDisplay
 import matplotlib.pyplot as plt
-
+import joblib
 
 df = pd.read_csv("dataset\data.csv")
 
@@ -67,7 +67,7 @@ class LogisticRegression:
         self.weights = np.zeros(n_features)
         self.bias = 0
 
-        for _ in range(self.n_iters):
+        for i in range(self.n_iters):
             linear_pred = np.dot(X, self.weights) + self.bias
             predictions = self.sigmoid(linear_pred)
 
@@ -163,3 +163,8 @@ recall=recall_score(y_test, Logistic_pred)
 print(f"Precision Score: {precision:.2f}")
 print(f"F1 Score: {f1:.2f}")
 print(f"Recall Score: {recall:.2f}")
+
+# Save Logistic Regression model
+joblib.dump(logistic_reg, "logistic_regression_model.pkl")
+
+print("Models have been saved successfully.")
